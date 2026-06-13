@@ -19,16 +19,16 @@ class INTERACTIONSYSTEM_API UInteractionComponent : public USphereComponent
 
 public:
 
-	UFUNCTION(BlueprintCallable, BlueprintPure)
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Interaction")
 	const TArray<AActor*>& GetInteractables() const;
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category = "Interaction")
 	void SetFocussedInteractable(AActor* Interactable);
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category = "Interaction")
 	void BeginInteraction();
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category = "Interaction")
 	void EndInteraction();
 
 	static FInteractionEvent& GetOnInteractionBeginDelegate();
@@ -43,16 +43,16 @@ protected:
 
 private:
 
-	UFUNCTION(Server, Unreliable, BlueprintCallable)
+	UFUNCTION(Server, Unreliable, BlueprintCallable, Category = "Interaction")
 	void Server_BeginInteraction(AActor* Interactable);
 
-	UFUNCTION(Server, Unreliable, BlueprintCallable)
+	UFUNCTION(Server, Unreliable, BlueprintCallable, Category = "Interaction")
 	void Server_EndInteraction(AActor* Interactable);
 
-	UFUNCTION(NetMulticast, Reliable, BlueprintCallable)
+	UFUNCTION(NetMulticast, Reliable, BlueprintCallable, Category = "Interaction")
 	void BroadcastBeginInteraction(AActor* Interactable);
 
-	UFUNCTION(NetMulticast, Reliable, BlueprintCallable)
+	UFUNCTION(NetMulticast, Reliable, BlueprintCallable, Category = "Interaction")
 	void BroadcastEndInteraction(AActor* Interactable);
 
 	UFUNCTION()
